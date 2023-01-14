@@ -6,7 +6,9 @@ RUN zypper --non-interactive install \
 RUN mkdir -p /run/named && \
     chown named:named /run/named
 
-CMD ["/usr/sbin/named", "-u", "named"]
+ENV NAMED_ARGS ""
+
+CMD /usr/sbin/named $NAMED_ARGS -u named
 
 EXPOSE 53/tcp
 EXPOSE 53/udp
